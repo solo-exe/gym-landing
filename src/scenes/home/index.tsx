@@ -13,35 +13,35 @@ type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 
-const motionDivHeaderProps = {
-  initial: "hidden", // KEYWORD for initial state
-  whileInView: "visible", // KEYWORD for final state
-  viewport: {
-    once: true, // Should run once
-    amount: 0.5, // How much of the element should be show before the animation triggers
-  },
-  transition: {
-    duration: 0.5, // How long the animation takes
-  },
-  variants: {
-    hidden: {
-      opacity: 0, // transparency index of 0 i.e is transparent
-      x: -100, // initial position on the x-axis
-    }, // Specify details for keywords used in "initial" state
-    visible: {
-      opacity: 1, // transparency index of i.e is very opaque
-      x: 0, // final position on the x-axis
-    }, // Specify details for keywords used in "whileInView" state
-  },
-};
+// const motionDivHeaderProps = {
+//   initial: "hidden", // KEYWORD for initial state
+//   whileInView: "visible", // KEYWORD for final state
+//   viewport: {
+//     once: true, // Should run once
+//     amount: 0.5, // How much of the element should be show before the animation triggers
+//   },
+//   transition: {
+//     duration: 0.5, // How long the animation takes
+//   },
+//   variants: {
+//     hidden: {
+//       opacity: 0, // transparency index of 0 i.e is transparent
+//       x: -100, // initial position on the x-axis
+//     }, // Specify details for keywords used in "initial" state
+//     visible: {
+//       opacity: 1, // transparency index of i.e is very opaque
+//       x: 0, // final position on the x-axis
+//     }, // Specify details for keywords used in "whileInView" state
+//   },
+// };
 
-const motionDivActionProps = {
-  ...motionDivHeaderProps,
-  transition: {
-    ...motionDivHeaderProps.transition,
-    delay: 0.2, // Adds a delay relative to the elements without a motion delay
-  },
-};
+// const motionDivActionProps = {
+//   ...motionDivHeaderProps,
+//   transition: {
+//     ...motionDivHeaderProps.transition,
+//     delay: 0.2, // Adds a delay relative to the elements without a motion delay
+//   },
+// };
 
 const Home = ({ setSelectedPage }: Props) => {
   // const flexBetween = "flex items-center justify-between";
@@ -62,7 +62,29 @@ const Home = ({ setSelectedPage }: Props) => {
         {/* MAIN HEADER */}
         <div className="z-10 mt-32 md:basis-3/5">
           {/* HEADINGS */}
-          <motion.div className="md:-mt-20" {...motionDivHeaderProps}>
+          <motion.div
+            className="md:-mt-20"
+            initial="hidden" // KEYWORD for initial state
+            whileInView="visible" // KEYWORD for final state
+            viewport={{
+              once: true, // Should run once
+              amount: 0.5, // How much of the element should be show before the animation triggers
+            }}
+            transition={{
+              duration: 0.5, // How long the animation takes
+            }}
+            variants={{
+              hidden: {
+                opacity: 0, // transparency index of 0 i.e is transparent
+                x: -100, // initial position on the x-axis
+              }, // Specify details for keywords used in "initial" state
+              visible: {
+                opacity: 1, // transparency index of i.e is very opaque
+                x: 0, // final position on the x-axis
+              }, // Specify details for keywords used in "whileInView" state
+            }}
+            // {...motionDivHeaderProps}
+          >
             <div className="relative">
               <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-evolvetext">
                 <img src={HomePageText} alt="home-page-text" />
@@ -78,7 +100,27 @@ const Home = ({ setSelectedPage }: Props) => {
           {/* ACTIONS */}
           <motion.div
             className={`flex mt-8 items-center gap-9`}
-            {...motionDivActionProps}
+            initial="hidden" // KEYWORD for initial state
+            whileInView="visible" // KEYWORD for final state
+            viewport={{
+              once: true, // Should run once
+              amount: 0.5, // How much of the element should be show before the animation triggers
+            }}
+            transition={{
+              duration: 0.5, // How long the animation takes
+              delay: 0.2,
+            }}
+            variants={{
+              hidden: {
+                opacity: 0, // transparency index of 0 i.e is transparent
+                x: -100, // initial position on the x-axis
+              }, // Specify details for keywords used in "initial" state
+              visible: {
+                opacity: 1, // transparency index of i.e is very opaque
+                x: 0, // final position on the x-axis
+              }, // Specify details for keywords used in "whileInView" state
+            }}
+            // {...motionDivActionProps}
           >
             <ActionButton setSelectedPage={setSelectedPage}>
               Join Now
