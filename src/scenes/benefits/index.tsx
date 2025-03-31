@@ -8,6 +8,9 @@ import { motion } from "framer-motion";
 import HText from "@/shared/HText";
 import { BenefitType, SelectedPage } from "@/shared/types";
 import Benefit from "./Benefit";
+import BenefitsPageGraphic from "../../assets/BenefitsPageGraphic.png";
+import AbstractWaves from "../../assets/AbstractWaves.png";
+import ActionButton from "../ActionButton";
 
 const benefits: BenefitType[] = [
   {
@@ -37,31 +40,28 @@ const container = {
   },
 };
 
-const motionDivBenefitsChildrenProps = {
-  initial: "hidden", // KEYWORD for initial state
-  whileInView: "visible", // KEYWORD for final state
-  viewport: {
-    once: true, // Should run once
-    amount: 0.5, // How much of the element should be show before the animation triggers
-  },
-  //   transition: {
-  //     duration: 0.5, // How long the animation takes
-  //   },
-  variants: { container },
-};
+// const motionDivBenefitsChildrenProps = {
+//   initial: "hidden", // KEYWORD for initial state
+//   whileInView: "visible", // KEYWORD for final state
+//   viewport: {
+//     once: true, // Should run once
+//     amount: 0.5, // How much of the element should be show before the animation triggers
+//   },
+//   //   transition: {
+//   //     duration: 0.5, // How long the animation takes
+//   //   },
+//   variants: { container },
+// };
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 
 const Benefits = ({ setSelectedPage }: Props) => {
-  setSelectedPage;
-
   return (
     <section id="benefits" className="mx-auto min-h-full w-5/6 py-20">
-      <div
-      // onViewportEnter={() => setSelectedPage(SelectedPage.Benefits)}
-      // {...motionDivBenefitsProps}
+      <motion.div
+        onViewportEnter={() => setSelectedPage(SelectedPage.Benefits)}
       >
         {/* HEADER */}
         <div className="md:my-5 md:w-3/5">
@@ -78,7 +78,7 @@ const Benefits = ({ setSelectedPage }: Props) => {
           className="md:flex items-center justify-between gap-8 mt-5"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ amount: 0.5, once: true }}
           variants={container}
           // {...motionDivBenefitsChildrenProps}
         >
@@ -89,12 +89,84 @@ const Benefits = ({ setSelectedPage }: Props) => {
                 icon={benefit.icon}
                 title={benefit.title}
                 description={benefit.description}
-                // setSelectedPage={setSelectedPage}
+                setSelectedPage={setSelectedPage}
               />
             );
           })}
         </motion.div>
-      </div>
+
+        {/* GRAPHICAS AND DESCRIPTION */}
+        <div className="mt-16 items-center justify-between gap-20 md:flex md:mt-28">
+          {/* GRAPHIC */}
+          <img src={BenefitsPageGraphic} alt="benefitsPageGraphic" />
+
+          {/* DESCRIPTION */}
+          <div>
+            {/* TITLE */}
+            <motion.div
+              className={`flex mt-8 items-center gap-9`}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5 }}
+              variants={{
+                hidden: { opacity: 0, x: 50 },
+                visible: { opacity: 1, x: 0 },
+              }}
+            >
+              <div className="relative">
+                <div className="before:absolute before:-top-20 before:-left-20 before:z-[1] before:content-abstractwaves">
+                  <div>
+                    <HText>
+                      MILLIONS OF HAPPY MEMBERS GETTING{" "}
+                      <span className="text-primary-500">FIT</span>
+                    </HText>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* BODY */}
+            <motion.div
+              className={`flex mt-8 items-center gap-9`}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              variants={{
+                hidden: { opacity: 0, x: 50 },
+                visible: { opacity: 1, x: 0 },
+              }}
+            >
+              <p className="my-5">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Corporis veritatis, magni aspernatur nulla pariatur labore,
+                voluptatum deleniti eius ducimus eveniet qui! Eveniet, obcaecati
+                et! Commodi enim veritatis tempore aliquam illum. Lorem ipsum
+                dolor sit amet consectetur, adipisicing elit. Mollitia commodi
+                quisquam, officiis perferendis, unde reprehenderit at aliquid
+                velit aut asperiores repellat ullam facilis assumenda soluta
+                facere, optio nulla inventore pariatur.
+              </p>
+              <p className="mb-5">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Mollitia commodi quisquam, officiis perferendis, unde
+                reprehenderit at aliquid velit aut asperiores repellat ullam
+                facilis assumenda soluta facere, optio nulla inventore pariatur.
+              </p>
+            </motion.div>
+
+            {/* BUTTON */}
+            <div className="relative">
+              <div className="before:absolute before:-bottom-20 before:right-40 before:content-sparkles">
+                <ActionButton setSelectedPage={setSelectedPage}>
+                  Join Now
+                </ActionButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 };
