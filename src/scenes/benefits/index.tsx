@@ -9,7 +9,6 @@ import HText from "@/shared/HText";
 import { BenefitType, SelectedPage } from "@/shared/types";
 import Benefit from "./Benefit";
 import BenefitsPageGraphic from "../../assets/BenefitsPageGraphic.png";
-import AbstractWaves from "../../assets/AbstractWaves.png";
 import ActionButton from "../ActionButton";
 
 const benefits: BenefitType[] = [
@@ -39,19 +38,6 @@ const container = {
     transition: { staggerChildren: 0.2 }, // make the animation trigger on the children one after the other
   },
 };
-
-// const motionDivBenefitsChildrenProps = {
-//   initial: "hidden", // KEYWORD for initial state
-//   whileInView: "visible", // KEYWORD for final state
-//   viewport: {
-//     once: true, // Should run once
-//     amount: 0.5, // How much of the element should be show before the animation triggers
-//   },
-//   //   transition: {
-//   //     duration: 0.5, // How long the animation takes
-//   //   },
-//   variants: { container },
-// };
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
@@ -103,32 +89,19 @@ const Benefits = ({ setSelectedPage }: Props) => {
           {/* DESCRIPTION */}
           <div>
             {/* TITLE */}
-            <motion.div
-              className={`flex mt-8 items-center gap-9`}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5 }}
-              variants={{
-                hidden: { opacity: 0, x: 50 },
-                visible: { opacity: 1, x: 0 },
-              }}
-            >
-              <div className="relative">
-                <div className="before:absolute before:-top-20 before:-left-20 before:z-[1] before:content-abstractwaves">
-                  <div>
-                    <HText>
-                      MILLIONS OF HAPPY MEMBERS GETTING{" "}
-                      <span className="text-primary-500">FIT</span>
-                    </HText>
-                  </div>
+            <div className="relative mt-20 md:mt-0">
+              <div className="before:absolute before:-top-20 before:-left-20 before:z-[1] before:content-abstractwaves">
+                <div>
+                  <HText>
+                    MILLIONS OF HAPPY MEMBERS GETTING{" "}
+                    <span className="text-primary-500">FIT</span>
+                  </HText>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* BODY */}
             <motion.div
-              className={`flex mt-8 items-center gap-9`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
@@ -151,14 +124,13 @@ const Benefits = ({ setSelectedPage }: Props) => {
               <p className="mb-5">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Mollitia commodi quisquam, officiis perferendis, unde
-                reprehenderit at aliquid velit aut asperiores repellat ullam
-                facilis assumenda soluta facere, optio nulla inventore pariatur.
+                reprehenderit.
               </p>
             </motion.div>
 
             {/* BUTTON */}
             <div className="relative">
-              <div className="before:absolute before:-bottom-20 before:right-40 before:content-sparkles">
+              <div className="before:absolute before:-bottom-20 before:right-40 before:content-sparkles before:z-[-1]">
                 <ActionButton setSelectedPage={setSelectedPage}>
                   Join Now
                 </ActionButton>

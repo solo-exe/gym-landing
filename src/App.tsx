@@ -3,6 +3,7 @@ import Home from "@/scenes/home";
 import Benefits from "@/scenes/benefits";
 import { useEffect, useState } from "react";
 import { SelectedPage } from "./shared/types";
+import OurClasses from "./scenes/ourClasses";
 
 export default function App() {
   const [selectedPage, setSelectedPage] = useState<string>(SelectedPage.Home);
@@ -28,10 +29,9 @@ export default function App() {
         selectedPage={selectedPage as SelectedPage}
         setSelectedPage={setSelectedPage}
       />
-
       <Home setSelectedPage={setSelectedPage} />
-
       <Benefits setSelectedPage={setSelectedPage} />
+      <OurClasses setSelectedPage={setSelectedPage} />
 
       {/* <div className="content">
         {Array.from({ length: 50 }, (_, index) => (
