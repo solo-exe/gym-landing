@@ -1,16 +1,11 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
-
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
     },
     "target": "ESNext",
     "useDefineForClassFields": true,
+    "allowImportingTsExtensions": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
@@ -19,12 +14,46 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
-  // "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["./src/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
+
+// {
+//   "files": [],
+//   "references": [
+//     // { "path": "./tsconfig.app.json" },
+//     { "path": "./tsconfig.node.json" }
+//   ],
+
+//   "compilerOptions": {
+//     "paths": {
+//       "@/*": ["./src/*"]
+//     },
+//     "allowImportingTsExtensions": true,
+//     "noEmit": true,
+//     "target": "ESNext",
+//     "useDefineForClassFields": true,
+//     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+//     "allowJs": false,
+//     "skipLibCheck": true,
+//     "esModuleInterop": false,
+//     "allowSyntheticDefaultImports": true,
+//     "strict": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "module": "ESNext",
+//     "moduleResolution": "bundler",
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "outDir": "./dist", // Specify the output directory for compiled files
+//     "jsx": "react-jsx"
+//   },
+//   "include": ["src", "src/**/*"]
+
+//   // "references": [{ "path": "./tsconfig.node.json" }]
+// }
