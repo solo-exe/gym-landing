@@ -9,7 +9,7 @@ import HText from "@/shared/HText";
 import { BenefitType, SelectedPage } from "@/shared/types";
 import Benefit from "./Benefit";
 import BenefitsPageGraphic from "../../assets/BenefitsPageGraphic.png";
-import ActionButton from "../ActionButton";
+import ActionButton from "@/shared/ActionButton";
 
 const benefits: BenefitType[] = [
   {

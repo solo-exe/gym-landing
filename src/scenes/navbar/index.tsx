@@ -4,7 +4,7 @@ import Link from "./Link";
 import { SelectedPage, SelectedPageKey } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
-import ActionButton from "../ActionButton";
+import ActionButton from "@/shared/ActionButton";
 
 type Props = {
   isTopOfPage: boolean;
